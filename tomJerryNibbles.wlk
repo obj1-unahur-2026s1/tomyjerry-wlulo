@@ -6,12 +6,35 @@ object tom {
     }
 
     method correrDistancia(metros){
-        energia = energia - (metros/2) 
+        energia = energia - self.consumoPorCorrer(metros)
     } 
+
+     method consumoPorCorrer(distancia){
+        return distancia / 2
+    }
 
     method velocidadMaxima(){
         return (energia/10) +5
     }      
+
+    method energia(){
+        return energia
+    }
+
+    method estaFeliz(){
+        return energia > 50
+    }
+
+    method puedeCazar(distancia){
+        return energia >= self.consumoPorCorrer(distancia)
+    }
+
+    method cazarADistancia(raton, distancia){
+        if (self.puedeCazar(distancia)){
+            self.correrDistancia(distancia)
+            self.comer(raton)
+        }
+    }
 }
 
 object jerry {
@@ -33,14 +56,14 @@ object nibbles {
 }
 
 object compa {
-  var edad= 12
+  var dientes= 0
 
   method peso(){
-    return edad *20 
+    return dientes *2 
   }
 
-  method cumplirAños(){
-    edad= edad+1
+  method recolectarDientes(){
+    dientes= dientes+1
   }
 }
 
